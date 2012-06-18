@@ -15,6 +15,7 @@
 		5D331EBB158F15E200EF5A58 /* WTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D331EBA158F15E200EF5A58 /* WTAppDelegate.m */; };
 		5D331EBE158F15E200EF5A58 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D331EBC158F15E200EF5A58 /* MainStoryboard.storyboard */; };
 		5D331EC1158F15E200EF5A58 /* WTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D331EC0158F15E200EF5A58 /* WTViewController.m */; };
+		5D331EC8158F15F300EF5A58 /* highlight in Resources */ = {isa = PBXBuildFile; fileRef = 5D331EC7158F15F300EF5A58 /* highlight */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +23,16 @@
 		5D331EAA158F15E200EF5A58 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D331EAC158F15E200EF5A58 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5D331EAE158F15E200EF5A58 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5D331EB2158F15E200EF5A58 /* UIWebTouch-Info.plist */ = {isa = PBXFileReference; path = "UIWebTouch-Info.plist"; sourceTree = "<group>"; };
+		5D331EB2158F15E200EF5A58 /* UIWebTouch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIWebTouch-Info.plist"; sourceTree = "<group>"; };
 		5D331EB4158F15E200EF5A58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5D331EB6158F15E200EF5A58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5D331EB8158F15E200EF5A58 /* UIWebTouch-Prefix.pch */ = {isa = PBXFileReference; path = "UIWebTouch-Prefix.pch"; sourceTree = "<group>"; };
-		5D331EB9158F15E200EF5A58 /* WTAppDelegate.h */ = {isa = PBXFileReference; path = WTAppDelegate.h; sourceTree = "<group>"; };
+		5D331EB8158F15E200EF5A58 /* UIWebTouch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWebTouch-Prefix.pch"; sourceTree = "<group>"; };
+		5D331EB9158F15E200EF5A58 /* WTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTAppDelegate.h; sourceTree = "<group>"; };
 		5D331EBA158F15E200EF5A58 /* WTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTAppDelegate.m; sourceTree = "<group>"; };
 		5D331EBD158F15E200EF5A58 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		5D331EBF158F15E200EF5A58 /* WTViewController.h */ = {isa = PBXFileReference; path = WTViewController.h; sourceTree = "<group>"; };
+		5D331EBF158F15E200EF5A58 /* WTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTViewController.h; sourceTree = "<group>"; };
 		5D331EC0158F15E200EF5A58 /* WTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTViewController.m; sourceTree = "<group>"; };
+		5D331EC7158F15F300EF5A58 /* highlight */ = {isa = PBXFileReference; lastKnownFileType = folder; path = highlight; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 		5D331E9B158F15E200EF5A58 = {
 			isa = PBXGroup;
 			children = (
+				5D331EC7158F15F300EF5A58 /* highlight */,
 				5D331EB0158F15E200EF5A58 /* UIWebTouch */,
 				5D331EA9158F15E200EF5A58 /* Frameworks */,
 				5D331EA7158F15E200EF5A58 /* Products */,
@@ -152,6 +155,7 @@
 			files = (
 				5D331EB5158F15E200EF5A58 /* InfoPlist.strings in Resources */,
 				5D331EBE158F15E200EF5A58 /* MainStoryboard.storyboard in Resources */,
+				5D331EC8158F15F300EF5A58 /* highlight in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
