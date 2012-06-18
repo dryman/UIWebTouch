@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTViewController : UIViewController
+@interface WTViewController : UIViewController <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
 
 @end

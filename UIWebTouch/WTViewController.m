@@ -11,12 +11,16 @@
 @interface WTViewController ()
 @property (nonatomic,strong) NSURL *baseURL;
 @property (nonatomic,strong) NSURL *fileURL;
+@property (nonatomic,strong) NSTimer *timer;
+@property (nonatomic,assign) UIGestureRecognizerState gestureState;
 @end
 
 @implementation WTViewController
 @synthesize webView;
 @synthesize baseURL;
 @synthesize fileURL;
+@synthesize timer;
+@synthesize gestureState;
 
 - (void)viewDidLoad
 {
@@ -39,6 +43,11 @@
     [result appendString:escapeContent];
     [result appendString:@"</code></pre></body></html>"];
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.delegate = self;
+    [self.view addGestureRecognizer:singleTap];
+    
     [webView loadHTMLString:result baseURL:baseURL];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -54,5 +63,55 @@
 {
     return YES;
 }
+
+#pragma mark - Gesture Recognizer delegate
+
+// This method receive touch event first
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    NSLog(@"gestureRecognizer shouldReceiveTouch: tapCount = %d",(int)touch.tapCount);
+    if (touch.tapCount ==1) {
+        self.timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(handleSingleTap:) userInfo:nil repeats:NO];
+        [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+        self.gestureState = UIGestureRecognizerStateBegan;
+        return YES;
+    }
+    else if (touch.tapCount ==2 && self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    return NO;
+}
+
+// This is the second method to recognize touch event
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    NSLog(@"shouldRecognizeSimultaneouslyWithGestureRecognizer, state is %@",[self debugUIGestureState:gestureRecognizer.state]);
+    self.gestureState = gestureRecognizer.state;
+    return YES;
+}
+
+// Handler will be called from timer
+- (void)handleSingleTap:(UITapGestureRecognizer*)sender {
+    NSLog(@"handleSingleTap, state: %@", [self debugUIGestureState:self.gestureState]);
+    if (self.gestureState==UIGestureRecognizerStateRecognized) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SingleTap" message:@"Oh yes!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+- (NSString*) debugUIGestureState: (UIGestureRecognizerState) state {
+    NSString *str;
+    switch (state) {
+        case UIGestureRecognizerStateBegan:str=@"UIGestureRecognizerStateBegan";break;
+        case UIGestureRecognizerStateEnded:str=@"UIGestureRecognizerStateEnded";break;
+        case UIGestureRecognizerStateFailed:str=@"UIGestureRecognizerStateFailed";break;
+        case UIGestureRecognizerStateChanged:str=@"UIGestureRecognizerStateChanged";break;
+        case UIGestureRecognizerStatePossible:str=@"UIGestureRecognizerStatePossible";break;
+        case UIGestureRecognizerStateCancelled:str=@"UIGestureRecognizerStateCancelled";break;
+        default:
+            break;
+    }
+    return str;
+}
+
 
 @end
