@@ -14,6 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Enable webkit inspector on port 9999
+#if (TARGET_IPHONE_SIMULATOR)
+    [NSClassFromString(@"WebView") performSelector:@selector(_enableRemoteInspector)];
+#endif
     // Override point for customization after application launch.
     return YES;
 }
